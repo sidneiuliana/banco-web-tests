@@ -2,17 +2,19 @@ describe('Login', () => {
   beforeEach(() =>{
     //Arrange
     cy.visit('http://localhost:4000')
+    cy.screenshot('apos-visitar-pagina')
   })
-  
+ 
   it('Login com dados validos deve permitir a entrada no sistema', () => {
     //Act
     cy.fixture('credenciais').then(credenciais => {
       cy.get('#username').click().type(credenciais.valida.usuario)
       cy.get('#senha').click().type(credenciais.valida.senha)
     })
+    cy.screenshot('apos-preencher-dados-validos')
     //cy.get('#login-section > .btn').click() //melhorando na linha de baico
     cy.contains('button','Entrar').click()
-
+    cy.screenshot('apos-clicar-no-botao-entrar')
     //Assert
     cy.contains('h4','Realizar Transferência').should('be.visible') //Verifico se o elemento esta visivel
   })
