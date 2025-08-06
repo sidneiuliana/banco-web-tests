@@ -5,5 +5,5 @@ Cypress.Commands.add('verificarMensagemNoToast', mensagem =>{
 Cypress.Commands.add('selecionarOpcaoNaCombobox', (labelDocampo, opcao) =>{
     cy.get(`label[for="${labelDocampo}"]`).parent().as(`campo-${labelDocampo}`)
     cy.get(`@campo-${labelDocampo}`).click() //cliquei no elemento pai
-    cy.get(`@campo-${labelDocampo}`).contains(`${opcao}`).click()
+    cy.get(`@campo-${labelDocampo}`).contains(opcao).click()
 })
